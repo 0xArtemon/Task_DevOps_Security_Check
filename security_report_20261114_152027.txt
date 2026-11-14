@@ -1,0 +1,256 @@
+======================================================================
+ ЗВІТ З БЕЗПЕКИ СЕРЕДОВИЩА (SECURITY AUDIT REPORT)
+ Дата запуску: 2026-11-14 15:20:27
+ Режим перевірки: FULL
+ Рівень привілеїв: ROOT (повний доступ)
+======================================================================
+
+=== [1] Інформація про систему ===
+
+Версія ядра: 7.1.5+kali-amd64; Архітектура: x86_64
+Повний вивід uname -a: Linux kali 7.1.5+kali-amd64 #1 SMP PREEMPT_DYNAMIC Kali 7.1.5-1kali1 (2026-07-29) x86_64 GNU/Linux
+Назва хоста: kali
+Аптайм хоста: up 30 minutes
+Дистрибутив хоста: Kali GNU/Linux Rolling
+=========================================
+
+=== [2] Користувачі та автентифікація ===
+
+Поточний користувач та його права (групи): uid=0(root) gid=0(root) groups=0(root)
+Список дозволених sudo-команд:
+Matching Defaults entries for root on kali:
+    secure_path=/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+Runas and Command-specific defaults for root:
+    Defaults!/usr/sbin/visudo env_keep+="SUDO_EDITOR EDITOR VISUAL"
+
+User root may run the following commands on kali:
+    (ALL : ALL) ALL
+  -> Доступні sudo-привілеї виведено вище.
+Список користувачів з UID = 0 (права root):
+  Знайдено користувачів (1): root 
+Останні 10 успішних входів:
+lightdm  tty7         :0               Sat Nov 14 14:50:38 2026 - still logged in          
+kali     pts/0        192.168.1.129    Sat Nov 14 14:50:36 2026 - still logged in          
+lightdm  tty7         :0               Sat Nov 14 14:43:33 2026 - still logged in          
+kali     pts/0        192.168.1.129    Sat Nov 14 14:43:32 2026 - still logged in          
+lightdm  tty7         :0               Sat Nov 14 12:32:26 2026 - still logged in          
+kali     pts/0        192.168.1.129    Sat Nov 14 12:32:24 2026 - still logged in          
+kali     pts/2        192.168.1.129    Fri Nov 13 10:05:22 2026 - still logged in          
+kali     tty7         :0               Fri Nov 13 09:39:47 2026 - still logged in          
+lightdm  tty7         :0               Fri Nov 13 09:39:08 2026 - Fri Nov 13 09:39:47 2026  (00:00)
+kali     tty7         :0               Tue Nov 10 08:11:56 2026 - still logged in          
+
+wtmpdb begins Tue Nov 10 08:11:56 2026
+Останні 10 невдалих спроб входу:
+  Утиліту lastb не знайдено в системі.
+=========================================
+
+=== [3] Права доступу до файлів ===
+
+Знайдено SUID-файлів: 33
+/usr/lib/mysql/plugin/auth_pam_tool_dir/auth_pam_tool
+/usr/lib/xorg/Xorg.wrap
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/chromium/chrome-sandbox
+/usr/sbin/pppd
+/usr/sbin/mount.nfs
+/usr/sbin/mount.cifs
+/usr/bin/kismet_cap_nxp_kw41z
+/usr/bin/kismet_cap_linux_bluetooth
+/usr/bin/rsh-redone-rsh
+/usr/bin/pkexec
+/usr/bin/rsh-redone-rlogin
+/usr/bin/su
+/usr/bin/kismet_cap_hak5_wifi_coconut
+/usr/bin/kismet_cap_ubertooth_one
+/usr/bin/gpasswd
+/usr/bin/kismet_cap_ti_cc_2531
+/usr/bin/umount
+/usr/bin/ntfs-3g
+/usr/bin/chfn
+/usr/bin/chsh
+/usr/bin/kismet_cap_nrf_mousejack
+/usr/bin/kismet_cap_rz_killerbee
+/usr/bin/mount
+/usr/bin/kismet_cap_nrf_52840
+/usr/bin/kismet_cap_ti_cc_2540
+/usr/bin/fusermount3
+/usr/bin/kismet_cap_nrf_51822
+/usr/bin/kismet_cap_linux_wifi
+/usr/bin/newgrp
+/usr/bin/sudo
+/usr/bin/passwd
+Знайдено SGID-файлів: 8
+/usr/lib/xorg/Xorg.wrap
+/usr/sbin/unix_chkpwd
+/usr/bin/expiry
+/usr/bin/dotlockfile
+/usr/bin/ssh-agent
+/usr/bin/plocate
+/usr/bin/crontab
+/usr/bin/chage
+Знайдено world-writable файлів (окрім /proc та /sys): 0
+[FULL] Перевірка привілеїв файлів (getcap):
+/usr/lib/nmap/nmap cap_net_bind_service,cap_net_admin,cap_net_raw=eip
+/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper cap_net_bind_service,cap_net_admin,cap_sys_nice=ep
+/usr/bin/dumpcap cap_net_admin,cap_net_raw=eip
+/usr/bin/fping cap_net_raw=ep
+=========================================
+
+=== [4] Мережа ===
+
+Активні слухаючі порти (ss):
+Netid State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+tcp   LISTEN 0      128        127.0.0.1:6010      0.0.0.0:*    users:(("sshd-session",pid=774,fd=11))
+tcp   LISTEN 0      128          0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=638,fd=6))
+tcp   LISTEN 0      128             [::]:22           [::]:*    users:(("sshd",pid=638,fd=7))
+tcp   LISTEN 0      128            [::1]:6010         [::]:*    users:(("sshd-session",pid=774,fd=10))
+Активні мережеві з'єднання (ss):
+Netid Recv-Q Send-Q      Local Address:Port  Peer Address:Port Process
+udp   0      0      192.168.1.109%eth0:68     192.168.1.1:67    users:(("NetworkManager",pid=508,fd=26))
+tcp   0      0           192.168.1.109:22   192.168.1.129:58300 users:(("sshd-session",pid=773,fd=7),("sshd-session",pid=725,fd=7))
+tcp   0      256         192.168.1.109:22   192.168.1.129:58297 users:(("sshd-session",pid=774,fd=7),("sshd-session",pid=692,fd=7))
+  -> [WARNING] Виявлено порти (окрім SSH 22), відкриті на всі мережеві інтерфейси!
+=========================================
+
+=== [5] Процеси та автозапуск ===
+
+Дерево процесів:
+  Загальна кількість процесів: 168. Виводимо перші 30:
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           2  0.0  0.0      0     0 ?        S    14:50   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [pool_workqueue_release]
+root           4  0.0  0.0      0     0 ?        I<   14:50   0:00  \_ [kworker/R-rcu_gp]
+root           5  0.0  0.0      0     0 ?        I<   14:50   0:00  \_ [kworker/R-sync_wq]
+root           6  0.0  0.0      0     0 ?        I<   14:50   0:00  \_ [kworker/R-kvfree_rcu_reclaim]
+root           7  0.0  0.0      0     0 ?        I<   14:50   0:00  \_ [kworker/R-slub_flushwq]
+root           8  0.0  0.0      0     0 ?        I<   14:50   0:00  \_ [kworker/R-netns]
+root          10  0.0  0.0      0     0 ?        I<   14:50   0:00  \_ [kworker/0:0H-kblockd]
+root          12  0.0  0.0      0     0 ?        I    14:50   0:00  \_ [kworker/u16:0-ipv6_addrconf]
+root          13  0.0  0.0      0     0 ?        I<   14:50   0:00  \_ [kworker/R-mm_percpu_wq]
+root          14  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [ksoftirqd/0]
+root          15  0.0  0.0      0     0 ?        I    14:50   0:01  \_ [rcu_preempt]
+root          16  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [rcu_exp_par_gp_kthread_worker/0]
+root          17  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [rcu_exp_gp_kthread_worker]
+root          18  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [migration/0]
+root          19  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [kprobe-optimizer]
+root          20  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [idle_inject/0]
+root          21  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [cpuhp/0]
+root          22  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [cpuhp/1]
+root          23  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [idle_inject/1]
+root          24  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [migration/1]
+root          25  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [ksoftirqd/1]
+root          27  0.0  0.0      0     0 ?        I<   14:50   0:00  \_ [kworker/1:0H-kblockd]
+root          28  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [cpuhp/2]
+root          29  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [idle_inject/2]
+root          30  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [migration/2]
+root          31  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [ksoftirqd/2]
+root          33  0.0  0.0      0     0 ?        I<   14:50   0:00  \_ [kworker/2:0H-kblockd]
+root          34  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [cpuhp/3]
+root          35  0.0  0.0      0     0 ?        S    14:50   0:00  \_ [idle_inject/3]
+Заплановані задачі (crontab поточного користувача):
+  Запланованих задач для поточного користувача немає.
+Системні заплановані задачі (/etc/cron.*):
+/etc/cron.d:
+total 36
+drwxr-xr-x   2 root root  4096 Oct  9 13:40 .
+drwxr-xr-x 186 root root 12288 Nov 14 14:50 ..
+-rw-r--r--   1 root root   188 Aug 12 04:57 e2scrub_all
+-rw-r--r--   1 root root   607 Aug 14 03:51 john
+-rw-r--r--   1 root root   712 Dec 20  2025 php
+-rw-r--r--   1 root root   102 Apr 27  2026 .placeholder
+-rw-r--r--   1 root root   400 Jan 15  2024 sysstat
+
+/etc/cron.daily:
+total 52
+drwxr-xr-x   2 root root  4096 Nov 14 14:38 .
+drwxr-xr-x 186 root root 12288 Nov 14 14:50 ..
+-rwxr-xr-x   1 root root   539 Dec  5  2025 apache2
+-rwxr-xr-x   1 root root  1478 Sep  4 10:40 apt-compat
+-rwxr-xr-x   1 root root   595 Apr 22  2026 debsums
+-rwxr-xr-x   1 root root   123 Mar 27  2026 dpkg
+-rwxr-xr-x   1 root root   377 Jul 14  2024 logrotate
+-rwxr-xr-x   1 root root  1395 May  2  2025 man-db
+-rw-r--r--   1 root root   102 Apr 27  2026 .placeholder
+-rwxr-xr-x   1 root root   652 Dec  7  2020 plocate
+-rwxr-xr-x   1 root root   526 Jan 15  2024 sysstat
+
+/etc/cron.hourly:
+total 20
+drwxr-xr-x   2 root root  4096 Oct  9 13:34 .
+drwxr-xr-x 186 root root 12288 Nov 14 14:50 ..
+-rw-r--r--   1 root root   102 Apr 27  2026 .placeholder
+
+/etc/cron.monthly:
+total 24
+drwxr-xr-x   2 root root  4096 Nov 14 14:38 .
+drwxr-xr-x 186 root root 12288 Nov 14 14:50 ..
+-rwxr-xr-x   1 root root   597 Apr 22  2026 debsums
+-rw-r--r--   1 root root   102 Apr 27  2026 .placeholder
+
+/etc/cron.weekly:
+total 28
+drwxr-xr-x   2 root root  4096 Nov 14 14:38 .
+drwxr-xr-x 186 root root 12288 Nov 14 14:50 ..
+-rwxr-xr-x   1 root root   596 Apr 22  2026 debsums
+-rwxr-xr-x   1 root root  1055 May  2  2025 man-db
+-rw-r--r--   1 root root   102 Apr 27  2026 .placeholder
+
+/etc/cron.yearly:
+total 20
+drwxr-xr-x   2 root root  4096 Oct  9 13:34 .
+drwxr-xr-x 186 root root 12288 Nov 14 14:50 ..
+-rw-r--r--   1 root root   102 Apr 27  2026 .placeholder
+[FULL] Активні systemd-сервіси, що автозапускаються:
+UNIT FILE                          STATE   PRESET
+accounts-daemon.service            enabled enabled
+console-setup.service              enabled enabled
+cron.service                       enabled enabled
+getty@.service                     enabled enabled
+grub-install-devices.service       enabled disabled
+haveged.service                    enabled enabled
+keyboard-setup.service             enabled enabled
+lightdm.service                    enabled disabled
+ModemManager.service               enabled enabled
+networking.service                 enabled enabled
+NetworkManager-dispatcher.service  enabled disabled
+NetworkManager-wait-online.service enabled disabled
+NetworkManager.service             enabled enabled
+regenerate-ssh-host-keys.service   enabled enabled
+smartmontools.service              enabled enabled
+ssh.service                        enabled disabled
+systemd-pstore.service             enabled enabled
+systemd-timesyncd.service          enabled enabled
+virtualbox-guest-utils.service     enabled enabled
+
+19 unit files listed.
+=========================================
+
+=== [6] Цілісність та свіжі зміни ===
+
+Файли, змінені за останні 24 години у ключових директоріях:
+  Директорія /etc:
+    /etc/resolv.conf
+  Директорія /bin:
+    Змінених файлів за останні 24 години не виявлено.
+  Директорія /usr/bin:
+    Змінених файлів за останні 24 години не виявлено.
+[FULL] Перевірка встановлених пакетів на модифікацію:
+  Модифікованих конфігураційних файлів пакетів не виявлено (debsums).
+=========================================
+
+=== [7] Підсумковий звіт ===
+
+  [OK]       [1] Інформація про систему
+  [OK]       [2] Користувачі та автентифікація
+  [OK]       [3] Права доступу до файлів
+  [WARNING]  [4] Мережа
+  [OK]       [5] Процеси та автозапуск
+  [WARNING]  [6] Цілісність та свіжі зміни
+
+Загальна кількість потенційних ризиків / попереджень: 2
+[УВАГА] Рекомендується перевірити зазначені попередження перед деплоєм!
+======================================================================
+Звіт збережено у файл: security_report_20261114_152027.txt
